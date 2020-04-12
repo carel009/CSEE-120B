@@ -1,4 +1,4 @@
-/*	Author: Christoher Arellano
+/*	Author: Christopher Arellano
  *  Partner(s) Name: 
  *	Lab Section: 026
  *	Assignment: Lab #3  Exercise #5
