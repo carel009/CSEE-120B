@@ -1,6 +1,6 @@
-/*	Author: lab
+/*	Author: Christopher Arellano
  *  Partner(s) Name: 
- *	Lab Section:
+ *	Lab Section: 026
  *	Assignment: Lab #3  Exercise #1
  *	Exercise Description: [optional - include for your own benefit]
  *
