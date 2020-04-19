@@ -90,7 +90,7 @@ expectPORTC 0x03
 expect state LOCK
 checkResult
 
-# Test sequence from Start: A2, 0x00, A1, A0 => PORTB: 0x01, PORTC: 0x06
+# Test sequence from Start: A2, !A0, A1, A0 => PORTB: 0x01, PORTC: 0x06
 test "PINA: 0x04, 0x00, 0x02, 0x01 => PORTB: 0x01, PORTC: 0x06, state: UNLOCK"
 set state = Start
 setPINA 0x04
