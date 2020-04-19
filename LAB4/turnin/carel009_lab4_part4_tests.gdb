@@ -40,10 +40,12 @@ echo Running all tests..."\n\n
 
 # Add tests below
 
-# Test sequence from Start: A2, A1, !A0 => PORTB: 0x01, PORTC: 0x01
-test "PINA: 0x04, 0x02, 0x00 => PORTB: 0x01, PORTC: 0x01, state: INIT"
+# Test sequence from Start: A2, !A0, A1, !A0 => PORTB: 0x01, PORTC: 0x01
+test "PINA: 0x04, 0x00, 0x02, 0x00 => PORTB: 0x01, PORTC: 0x01, state: INIT"
 set state = Start
 setPINA 0x04
+continue 2
+setPINA 0x00
 continue 2
 setPINA 0x02
 continue 2
@@ -54,14 +56,16 @@ expectPORTC 0x01
 expect state INIT
 checkResult
 
-# Test sequence from Start: A7, !A0, A2, A1 => PORTB: 0x01, PORTC: 0x06
-test "PINA: 0x80, 0x00, 0x04, 0x02 => PORTB: 0x01, PORTC: 0x06, state: UNLOCK"
+# Test sequence from Start: A7, !A0, A2, !A0, A1 => PORTB: 0x01, PORTC: 0x06
+test "PINA: 0x80, 0x00, 0x04, 0x00, 0x02 => PORTB: 0x01, PORTC: 0x06, state: UNLOCK"
 set state = Start
 setPINA 0x80
 continue 2
 setPINA 0x00
 continue 2 
 setPINA 0x04
+continue 2
+setPINA 0x00
 continue 2
 setPINA 0x02
 continue 2
@@ -70,10 +74,12 @@ expectPORTC 0x06
 expect state UNLOCK
 checkResult
 
-# Test sequence from Start: A2, A7, A2 => PORTB: 0x00, PORTC: 0x03
-test "PINA: 0x04, 0x80, 0x04 => PORTB: 0x00, PORTC: 0x03, state: LOCK"
+# Test sequence from Start: A2, !A0, A7, A2 => PORTB: 0x00, PORTC: 0x03
+test "PINA: 0x04, 0x00, 0x80, 0x04 => PORTB: 0x00, PORTC: 0x03, state: LOCK"
 set state = Start
 setPINA 0x04
+continue 2
+setPINA 0x00
 continue 2
 setPINA 0x80
 continue 2
@@ -84,10 +90,12 @@ expectPORTC 0x03
 expect state LOCK
 checkResult
 
-# Test sequence from Start: A2, A1, A0 => PORTB: 0x01, PORTC: 0x06
-test "PINA: 0x04, 0x02, 0x01 => PORTB: 0x01, PORTC: 0x06, state: UNLOCK"
+# Test sequence from Start: A2, !A0, A1, A0 => PORTB: 0x01, PORTC: 0x06
+test "PINA: 0x04, 0x00, 0x02, 0x01 => PORTB: 0x01, PORTC: 0x06, state: UNLOCK"
 set state = Start
 setPINA 0x04
+continue 2
+setPINA 0x00
 continue 2 
 setPINA 0x02
 continue 2
@@ -98,11 +106,13 @@ expectPORTC 0x06
 expect state UNLOCK
 checkResult
 
-# Test sequence from Start: A2, A1, !A0 => PORTB: 0x01, PORTC: 0x06
-test "PINA: 0x04, 0x02, 0x00 => PORTB: 0x00, PORTC: 0x01, state: INIT"
+# Test sequence from Start: A2, !A0, A1, !A0 => PORTB: 0x01, PORTC: 0x01
+test "PINA: 0x04, 0x00, 0x02, 0x00 => PORTB: 0x01, PORTC: 0x01, state: INIT"
 set state = Start
 setPINA 0x04
-continue 2 
+continue 2
+setPINA 0x00
+continue 2
 setPINA 0x02
 continue 2
 setPINA 0x00
