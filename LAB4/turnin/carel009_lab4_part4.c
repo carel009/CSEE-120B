@@ -36,7 +36,14 @@ void Tick()
 			}
 			break;
 		case NUM:
+			if ((PINA & 0x87) == 0x00)
+			{
 			state = WAIT;
+			}
+			else
+			{
+			state = NUM;
+			}
 			break;
 		case LOCK:
 			if ((PINA & 0x87) == 0x00)
@@ -60,6 +67,10 @@ void Tick()
 			else if ((PINA & 0x87) == 0x80)
 			{
 			state = LOCK;
+			}
+			else if ((PINA & 0x87) == 0x00)
+			{
+			state = WAIT;
 			}
 			else
 			{
