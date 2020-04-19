@@ -37,7 +37,14 @@ void Tick()
 			}
 			break;
 		case NUM:
-			state = CHECK;		
+			if ((PINA & 0x87) == 0x00)
+			{
+			state = CHECK;
+			}
+			else
+			{
+			state = NUM;
+			}		
 			break;
 		case LOCK:
 			if ((PINA & 0x87) == 0x00)
@@ -93,7 +100,14 @@ void Tick()
 			}
 			break;
 		case UNLOCK:
+			if ((PINA & 0x87) == 0x00)
+			{
 			state = INIT;
+			}
+			else
+			{
+			state = UNLOCK;
+			}
 			break;
 		default:
 			break;
